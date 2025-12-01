@@ -1,5 +1,17 @@
 # payblocks
 
+## 2.11.0
+
+### Minor Changes
+
+- f0e6c7b: Next.js 15.4.7 downgrade to keep actual stable release in sync with Payload CMS
+- f0e6c7b: deprecate and remove the archive block as it it old, not really used and coming from the Payload template. It was just still in here as reference, but is blocking now because of React19 incompatibility
+
+### Patch Changes
+
+- f0e6c7b: SearchList little refactoring to prevent the component hitting React19 rules, as it has been defined inside SearchButton
+- f0e6c7b: Upgrading eslint for Next.js compatibility
+
 ## 2.10.0
 
 ### Minor Changes
