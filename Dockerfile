@@ -1,24 +1,35 @@
-FROM node:18.8-alpine as base
+FROM node:18.8-alpine AS base
 
-FROM base as builder
+FROM base AS builder
+
+# Enable Corepack for pnpm
+RUN corepack enable
 
 WORKDIR /home/node/app
 COPY package*.json ./
+COPY pnpm-lock.yaml ./
 
 COPY . .
-RUN yarn install
-RUN yarn build
+RUN pnpm install
+RUN pnpm build
 
-FROM base as runtime
+FROM base AS runtime
 
 ENV NODE_ENV=production
 
+# Enable Corepack for pnpm
+RUN corepack enable
+
 WORKDIR /home/node/app
 COPY package*.json  ./
-COPY yarn.lock ./
+COPY pnpm-lock.yaml ./
 
-RUN yarn install --production
+RUN pnpm install --prod
+
+# Copy built application from builder stage
+COPY --from=builder /home/node/app/.next ./.next
+COPY --from=builder /home/node/app/public ./public
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD ["pnpm", "start"]
