@@ -14,7 +14,7 @@ export const IntroductionStep: React.FC = () => {
       <p className="text-lg text-gray-600">
         Welcome to Senpage your personalized gateway to a streamlined and engaging onboarding
         experience. Follow the steps to create your account, choose your role, and set up your
-        profile. We're excited to have you with us!
+        profile. We&apos;re excited to have you with us!
       </p>
 
       <div className="space-y-4 text-left max-w-md mx-auto">
