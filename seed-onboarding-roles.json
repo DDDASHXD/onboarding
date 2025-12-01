@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Founder",
+    "slug": "founder",
+    "description": "Get matched with mentors and startups that align with your interest and skills, and find projects, internships or sparring to grow your startup.",
+    "active": true
+  },
+  {
+    "name": "Investor",
+    "slug": "investor",
+    "description": "Find and connect with startups that align with your investment plan. Discover new opportunities to support.",
+    "active": true
+  },
+  {
+    "name": "Mentor",
+    "slug": "mentor",
+    "description": "Get matched with startups and talent, by sharing your expertise to help guide them with strategy, skill development and ideas for their project.",
+    "active": true
+  },
+  {
+    "name": "Studerende",
+    "slug": "student",
+    "description": "Bliv matchet med mentorer og startups ud fra dine interesser og kompetencer, og find projekter, praktik eller sparring.",
+    "active": true
+  }
+]
+
