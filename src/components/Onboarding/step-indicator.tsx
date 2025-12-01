@@ -33,3 +33,4 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({ steps, currentStep
   )
 }
 
+
