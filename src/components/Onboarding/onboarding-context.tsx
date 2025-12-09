@@ -42,6 +42,7 @@ export interface OnboardingData {
 
 interface OnboardingContextType {
   currentStep: number
+  maxStepReached: number
   setCurrentStep: (step: number) => void
   data: OnboardingData
   updateData: (data: Partial<OnboardingData>) => void
@@ -52,7 +53,8 @@ interface OnboardingContextType {
 const OnboardingContext = React.createContext<OnboardingContextType | undefined>(undefined)
 
 export const OnboardingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentStep, setCurrentStep] = React.useState(0)
+  const [currentStep, setCurrentStepState] = React.useState(0)
+  const [maxStepReached, setMaxStepReached] = React.useState(0)
   const [data, setData] = React.useState<OnboardingData>({
     firstName: '',
     lastName: '',
@@ -67,17 +69,28 @@ export const OnboardingProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setData((prev) => ({ ...prev, ...newData }))
   }, [])
 
+  const setCurrentStep = React.useCallback((step: number) => {
+    // Only allow navigation to steps that have been reached
+    if (step <= maxStepReached && step >= 0) {
+      setCurrentStepState(step)
+    }
+  }, [maxStepReached])
+
   const nextStep = React.useCallback(() => {
-    setCurrentStep((prev) => prev + 1)
+    setCurrentStepState((prev) => {
+      const next = prev + 1
+      setMaxStepReached((max) => Math.max(max, next))
+      return next
+    })
   }, [])
 
   const previousStep = React.useCallback(() => {
-    setCurrentStep((prev) => Math.max(0, prev - 1))
+    setCurrentStepState((prev) => Math.max(0, prev - 1))
   }, [])
 
   return (
     <OnboardingContext.Provider
-      value={{ currentStep, setCurrentStep, data, updateData, nextStep, previousStep }}
+      value={{ currentStep, maxStepReached, setCurrentStep, data, updateData, nextStep, previousStep }}
     >
       {children}
     </OnboardingContext.Provider>
@@ -91,5 +104,6 @@ export const useOnboarding = () => {
   }
   return context
 }
+
 
 

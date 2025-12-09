@@ -1,0 +1,5 @@
+- [x] Fjern tjek på introduktion
+- [x] Man skal kunne trykke på stepper baren
+- [x] Sikre at roller virker
+- [ ] Skifte billeder til roller
+- [x] Skriv tekst til roller

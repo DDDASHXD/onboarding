@@ -14,13 +14,13 @@ export const SummaryStep: React.FC<SummaryStepProps> = ({ onSubmit, isSubmitting
   const { data, previousStep } = useOnboarding()
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-4">Summary</h2>
-      <p className="text-center text-gray-600 mb-8">Here is a list of... (keep going)</p>
+    <div className="mx-auto max-w-2xl">
+      <h2 className="mb-4 text-center text-3xl font-bold">Summary</h2>
+      <p className="mb-8 text-center text-gray-600">Here is a list of the data you have entered.</p>
 
       <div className="space-y-6">
-        <div className="bg-white border rounded-lg p-6">
-          <h3 className="font-semibold text-lg mb-4">Basic Info</h3>
+        <div className="rounded-lg border bg-white p-6">
+          <h3 className="mb-4 text-lg font-semibold">Basic Info</h3>
           <div className="space-y-3 text-sm">
             <div>
               <p className="text-gray-600">Full Name</p>
@@ -44,8 +44,8 @@ export const SummaryStep: React.FC<SummaryStepProps> = ({ onSubmit, isSubmitting
         </div>
 
         {data.roleSlug === 'founder' && (
-          <div className="bg-white border rounded-lg p-6">
-            <h3 className="font-semibold text-lg mb-4">Company Details</h3>
+          <div className="rounded-lg border bg-white p-6">
+            <h3 className="mb-4 text-lg font-semibold">Company Details</h3>
             <div className="space-y-3 text-sm">
               <div>
                 <p className="text-gray-600">Company Name</p>
@@ -72,8 +72,8 @@ export const SummaryStep: React.FC<SummaryStepProps> = ({ onSubmit, isSubmitting
         )}
 
         {data.roleSlug === 'mentor' && (
-          <div className="bg-white border rounded-lg p-6">
-            <h3 className="font-semibold text-lg mb-4">Mentor Details</h3>
+          <div className="rounded-lg border bg-white p-6">
+            <h3 className="mb-4 text-lg font-semibold">Mentor Details</h3>
             <div className="space-y-3 text-sm">
               <div>
                 <p className="text-gray-600">Expertise</p>
@@ -96,8 +96,8 @@ export const SummaryStep: React.FC<SummaryStepProps> = ({ onSubmit, isSubmitting
         )}
 
         {data.roleSlug === 'investor' && (
-          <div className="bg-white border rounded-lg p-6">
-            <h3 className="font-semibold text-lg mb-4">Investor Details</h3>
+          <div className="rounded-lg border bg-white p-6">
+            <h3 className="mb-4 text-lg font-semibold">Investor Details</h3>
             <div className="space-y-3 text-sm">
               <div>
                 <p className="text-gray-600">Job Title</p>
@@ -115,8 +115,8 @@ export const SummaryStep: React.FC<SummaryStepProps> = ({ onSubmit, isSubmitting
           </div>
         )}
 
-        <div className="bg-white border rounded-lg p-6">
-          <h3 className="font-semibold text-lg mb-4">Profile</h3>
+        <div className="rounded-lg border bg-white p-6">
+          <h3 className="mb-4 text-lg font-semibold">Profile</h3>
           <div className="space-y-3 text-sm">
             <div>
               <p className="text-gray-600">Nickname</p>
@@ -136,16 +136,14 @@ export const SummaryStep: React.FC<SummaryStepProps> = ({ onSubmit, isSubmitting
 
       <div className="flex justify-center gap-4 pt-8">
         <Button type="button" variant="outline" onClick={previousStep} disabled={isSubmitting}>
-          <ArrowLeft className="w-4 h-4 mr-2" />
+          <ArrowLeft className="mr-2 h-4 w-4" />
           Previous step
         </Button>
         <Button onClick={onSubmit} disabled={isSubmitting}>
           {isSubmitting ? 'Submitting...' : 'Complete Registration'}
-          <ArrowRight className="w-4 h-4 ml-2" />
+          <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </div>
   )
 }
-
-

@@ -21,7 +21,7 @@ interface Role {
   }
 }
 
-const steps = ['Introduction', 'Basic info', 'Role', 'Role Specifications', 'Your Profile', 'Summary']
+const steps = ['Basic info', 'Role', 'Role Specifications', 'Your Profile', 'Summary']
 
 const OnboardingContent: React.FC = () => {
   const { currentStep, data } = useOnboarding()
@@ -78,7 +78,7 @@ const OnboardingContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        {currentStep > 0 && <StepIndicator steps={steps} currentStep={currentStep} />}
+        {currentStep > 0 && <StepIndicator steps={steps} currentStep={currentStep - 1} />}
 
         <div className="mt-8">
           {currentStep === 0 && <IntroductionStep />}
